@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class StudentScores {
+
+
+    public static void main(String[] args) {
+
+        int total;
+        int highest;
+        int lowest;
+        try (Scanner in = new Scanner(System.in)) {
+            int[] grades = new int[5];
+            total = 0;
+            highest = 0;
+            lowest = 100;
+            // Loop 5 times and get the grades
+            for (int i = 0; i < 5; i++) {
+                System.out.print("Enter grade for subject " + (i + 1) + ": ");
+                int grade = in.nextInt();
+                
+                // Check if the grade is valid
+                if (grade < 0 || grade > 100) {
+                    System.out.println("Invalid grade! Please try again.");
+                    i--;
+                } else {
+                    // Store the grade
+                    grades[i] = grade;
+                    
+                    // Calculate total
+                    total += grade;
+                    
+                    // Find the highest grade
+                    if (grade > highest) {
+                        highest = grade;
+                    }
+                    
+                    // Find the lowest grade
+                    if (grade < lowest) {
+                        lowest = grade;
+                    }
+                }
+            }
+        }
+
+        // Print out the results
+        System.out.println("Total marks: " + total);
+        System.out.println("Average marks: " + (total / 5.0));
+        System.out.println("Highest marks: " + highest);
+        System.out.println("Lowest marks: " + lowest);
+    }
+}
